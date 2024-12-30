@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.new-book {
+  position: relative;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.new-book::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #ff4136, transparent);
+  z-index: 0;
+  clip-path: polygon(50% 0%, 60% 30%, 100% 40%, 70% 50%, 80% 80%,
+      50% 65%, 20% 80%, 30% 50%, 0% 40%, 40% 30%);
+  border: 4px solid #ff4136;
+  box-shadow: 10px 10px 0 #000;
+}
+
+.new-book .container {
+  position: relative;
+  z-index: 1;
+}
+
+.book-cover {
+  display: flex;
+  justify-content: center;
+}
+
+.book-cover img {
+  width: 300px;
+  height: auto;
+  border: 8px solid #000;
+  box-shadow: 10px 10px 0 #ff4136;
+}
+
+.book-info {
+  max-width: 600px;
+}
+
+.book-info h1 {
+  font-size: 2.5rem;
+  color: #000;
+  text-shadow: 2px 2px #ff4136;
+}
+
+.book-info p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.buy-now {
+  background: #ff4136;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.buy-now:hover {
+  transform: scale(1.1);
+}
+
+.all-books {
+  padding: 2rem 1rem;
+}
+
+.all-books h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #000;
+  text-shadow: 1px 1px #ff4136;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 4px solid #000;
+  box-shadow: 5px 5px 0 #000;
+}
+
+.grid-item .speech-bubble {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 0.5rem 1rem;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 #ff4136;
+  font-size: 1rem;
+  display: none;
+}
+
+.grid-item:hover .speech-bubble {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .new-book .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+  }
+
+  .back-button nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .back-button nav ul li a:hover {
+    background-color: #a22929;
+  }
+
+  .back-button nav ul li a span {
+    display: none;
+  }
+
+  .back-button nav ul li a::before {
+    content: "<";
+    font-size: 1.5rem;
+  }
+
+  .comic-bubble {
+    left: unset;
+    right: -50px;
+    transform: rotate(10deg);
+  }
+
+  .comic-bubble::after {
+    left: unset;
+    right: 20px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-title {
+  margin-top: 0;
+}
+
+.modal-body {
+  margin: 10px 0 0;
+}
+
+.modal-content h2 {
+  margin: 0 0 1rem;
+  text-shadow: 1px 1px #ff4136;
+}
+
+.modal-content p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.book-button {
+  background: #ff4136;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.book-button:hover {
+  transform: scale(1.1);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: white;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 #000;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.modal-body {
+  font-size: 1rem;
+  color: #333;
+}
+
+.modal-close {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ff4136;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+.grid-item nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spanning {
+  margin-top: 2rem;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.back-button nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.back-button nav ul li {
+  display: inline-block;
+}
+
+.back-button nav ul li a {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  background-color: #e63838;
+  color: white;
+  border-radius: 2em;
+  display: inline-block;
+}
+
+.back-button nav ul li a:hover {
+  background-color: #a22929;
+}
+
+.comic-bubble {
+  position: absolute;
+  top: 10px;
+  left: -50px;
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  border-radius: 10px;
+  transform: rotate(-10deg);
+  z-index: 10;
+}
+
+.book-cover {
+  position: relative;
+  display: inline-block;
+}
+
+.comic-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff;
+}
